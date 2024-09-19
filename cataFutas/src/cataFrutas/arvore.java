@@ -1,5 +1,5 @@
 package cataFrutas;
 
-public class arvore {
+public abstract class arvore {
 
 }
