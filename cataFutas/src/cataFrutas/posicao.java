@@ -1,12 +1,12 @@
 package cataFrutas;
-
+import Frutas.*;
 public class posicao {
 	public String teste = "Funcionando";
-	private fruta fruta;
+	private Fruta fruta;
 	private grama grama;
 	private pedra pedra;
 	private arvore arvore;
-	private competidor competidor;
+	private Competidor competidor;
 	
 	public void setPedra(){
 		this.pedra = new pedra();
