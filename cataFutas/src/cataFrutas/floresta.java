@@ -1,5 +1,7 @@
 package cataFrutas;
 import java.util.Random;
+import Frutas.*;
+import Jogador.*;
 public class floresta{
 	private int dimensao;
 	public posicao[][] matriz;
