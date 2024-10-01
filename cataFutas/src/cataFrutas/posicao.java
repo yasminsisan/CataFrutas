@@ -1,7 +1,7 @@
 package cataFrutas;
 import Frutas.*;
+import Jogador.*;
 public class posicao {
-	public String teste = "Funcionando";
 	private Fruta fruta;
 	private grama grama;
 	private pedra pedra;
@@ -47,4 +47,38 @@ public class posicao {
 	public arvore getArvore() {
 		return this.arvore;
 	}
+	
+	public void setFruta(Fruta fruta) {
+		if(fruta instanceof Maracuja ) {
+			this.fruta = new Maracuja();
+		} else if(fruta instanceof Laranja) {
+			this.fruta = new Laranja();
+		} else if(fruta instanceof Abacate) {
+			this.fruta = new Abacate();
+		}else if(fruta instanceof Coco) {
+			this.fruta = new Coco();
+		}else if(fruta instanceof Acerola) {
+			this.fruta = new Acerola();
+		}else if(fruta instanceof Amora) {
+			this.fruta = new Amora();
+		}else if(fruta instanceof Goiaba) {
+			this.fruta = new Goiaba();
+		}
+	}
+	public boolean temFruta() {
+		return this.fruta != null;
+	}
+	
+	public Fruta getFruta() {
+		return this.fruta;
+	}
+	
+	public boolean temCompetidor() {
+		return this.competidor !=null;
+	}
+	
+	public void setCompetidor(String nome,int mochila) {
+		this.competidor = new Competidor(nome,mochila);
+	}
+	
 }
