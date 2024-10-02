@@ -1,5 +1,5 @@
 package cataFrutas;
-
+import Frutas.*;
 /**
  * Classe Árvore que servirá como base para os tipos de árvore do jogo
  */
