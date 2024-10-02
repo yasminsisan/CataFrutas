@@ -76,6 +76,15 @@ public class Competidor {
 	public void incrementaPontosVitoria() {
 		this.pontosVitoria++;
 	}
+
+
+	public void movimentar() {
+		if (pontosMovimento > 0) {
+			this.pontosMovimento--; 
+		} else {
+			throw new IllegalArgumentException("Pontos de movimento insuficientes");
+		}
+	}
 	
 	
 	/*
