@@ -6,6 +6,6 @@ package cataFrutas;
 public abstract class arvore {
 
     // Método abstrato que será implementado pelas subclasses
-    public void gerarFruta();
+    public abstract Fruta gerarFruta();
 
 }
