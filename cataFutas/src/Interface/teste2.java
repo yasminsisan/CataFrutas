@@ -27,27 +27,19 @@ public class teste2 {
         int botaoAltura = tabuleiroPanel.getHeight() / tamanho;
         
         //################### IMAGEM DA GRAMA ###########################
-        // Caminho da imagem (certifique-se de que a imagem esteja no diretório correto)
-        String caminhoImagemGrama = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\grama.jpg";
-        ImageIcon imagemIconGrama = new ImageIcon(caminhoImagemGrama);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
+       
         
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemGrama = "/Interface/grama.jpg";
+        ImageIcon imagemIconGrama = new ImageIcon(teste2.class.getResource(caminhoImagemGrama));
         Image imagemGrama = imagemIconGrama.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaGrama = new ImageIcon(imagemGrama);
         
         
         
         
-        
         //######################## IMAGEM DA PEDRA ###################3
-        String caminhoImagemPedra = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\pedra.jpg";
-        ImageIcon imagemIconPedra = new ImageIcon(caminhoImagemPedra);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemPedra = "/Interface/pedra.jpg";
+        ImageIcon imagemIconPedra = new ImageIcon(teste2.class.getResource(caminhoImagemPedra));
         Image imagemPedra = imagemIconPedra.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaPedra = new ImageIcon(imagemPedra);
         
@@ -55,12 +47,8 @@ public class teste2 {
         
         
         //######################## IMAGEM DA LARANJEIRA ###################3
-        String caminhoImagemLaranjeira = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\Laranjeira.jpg";
-        ImageIcon imagemIconLaranjeira = new ImageIcon(caminhoImagemLaranjeira);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemLaranjeira = "/Interface/Laranjeira.jpg";
+        ImageIcon imagemIconLaranjeira = new ImageIcon(teste2.class.getResource(caminhoImagemLaranjeira));
         Image imagemLaranjeira = imagemIconLaranjeira.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaLaranjeira = new ImageIcon(imagemLaranjeira);
 
@@ -68,12 +56,8 @@ public class teste2 {
         
         
         //######################## IMAGEM DA ABACATEIRO ###################3
-        String caminhoImagemAbacateiro = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\Abacateiro.jpg";
-        ImageIcon imagemIconAbacateiro = new ImageIcon(caminhoImagemAbacateiro);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemAbacateiro = "/Interface/Abacateiro.jpg";
+        ImageIcon imagemIconAbacateiro = new ImageIcon(teste2.class.getResource(caminhoImagemAbacateiro));
         Image imagemAbacateiro = imagemIconAbacateiro.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaAbacateiro = new ImageIcon(imagemAbacateiro);
 
@@ -81,12 +65,8 @@ public class teste2 {
         
         
         //######################## IMAGEM DA Coqueiro ###################3
-        String caminhoImagemCoqueiro = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\Coqueiro.jpg";
-        ImageIcon imagemIconCoqueiro = new ImageIcon(caminhoImagemCoqueiro);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemCoqueiro = "/Interface/Coqueiro.jpg";
+        ImageIcon imagemIconCoqueiro = new ImageIcon(teste2.class.getResource(caminhoImagemCoqueiro));     
         Image imagemCoqueiro = imagemIconCoqueiro.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaCoqueiro = new ImageIcon(imagemCoqueiro);
 
@@ -94,12 +74,8 @@ public class teste2 {
         
         
         //######################## IMAGEM DA Aceroleira ###################3
-        String caminhoImagemAceroleira = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\Aceroleira.jpg";
-        ImageIcon imagemIconAceroleira = new ImageIcon(caminhoImagemAceroleira);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemAceroleira = "/Interface/Aceroleira.jpg";
+        ImageIcon imagemIconAceroleira = new ImageIcon(teste2.class.getResource(caminhoImagemAceroleira));               
         Image imagemAceroleira = imagemIconAceroleira.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaAceroleira = new ImageIcon(imagemAceroleira);
 
@@ -107,12 +83,8 @@ public class teste2 {
         
         
         //######################## IMAGEM DA Amoreira ###################3
-        String caminhoImagemAmoreira = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\Amoreira.jpg";
-        ImageIcon imagemIconAmoreira = new ImageIcon(caminhoImagemAmoreira);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemAmoreira = "/Interface/Amoreira.jpg";
+        ImageIcon imagemIconAmoreira = new ImageIcon(teste2.class.getResource(caminhoImagemAmoreira));                
         Image imagemAmoreira = imagemIconAmoreira.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaAmoreira = new ImageIcon(imagemAmoreira);
 
@@ -120,17 +92,70 @@ public class teste2 {
         
         
         //######################## IMAGEM DA Goiabeira ###################3
-        String caminhoImagemGoiabeira = "C:\\Users\\pedro\\Documents\\java-ws\\cataFutas\\src\\Interface\\Goiabeira.jpg";
-        ImageIcon imagemIconGoiabeira = new ImageIcon(caminhoImagemGoiabeira);
-        // Calcula o tamanho de cada botão com base no tamanho do tabuleiro
-        
-
-        // Redimensiona a imagem apenas uma vez
+        String caminhoImagemGoiabeira = "/Interface/Goiabeira.jpg";
+        ImageIcon imagemIconGoiabeira = new ImageIcon(teste2.class.getResource(caminhoImagemGoiabeira));        
         Image imagemGoiabeira = imagemIconGoiabeira.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
         ImageIcon imagemRedimensionadaGoiabeira = new ImageIcon(imagemGoiabeira);
         
         
+        //###############  MARACUJA #########################
         
+        String caminhoImagemMaracuja = "/Interface/maracuja.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconMaracuja = new ImageIcon(teste2.class.getResource(caminhoImagemMaracuja));            
+        Image imagemMaracuja = imagemIconMaracuja.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaMaracuja = new ImageIcon(imagemMaracuja);
+        
+        //###############  LARANJA #########################
+        
+        String caminhoImagemLaranja = "/Interface/Laranja.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconLaranja = new ImageIcon(teste2.class.getResource(caminhoImagemLaranja));            
+        Image imagemLaranja = imagemIconLaranja.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaLaranja = new ImageIcon(imagemLaranja);
+        
+        
+        //###############  ABACATE #########################
+        
+        String caminhoImagemAbacate = "/Interface/Abacate.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconAbacate = new ImageIcon(teste2.class.getResource(caminhoImagemAbacate));            
+        Image imagemAbacate = imagemIconAbacate.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaAbacate = new ImageIcon(imagemAbacate);
+        
+        
+        //###############  COCO #########################
+        
+        String caminhoImagemCoco = "/Interface/Coco.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconCoco = new ImageIcon(teste2.class.getResource(caminhoImagemCoco));            
+        Image imagemCoco = imagemIconCoco.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaCoco = new ImageIcon(imagemCoco);
+        
+        
+        //###############  ACEROLA #########################
+        
+        String caminhoImagemAcerola = "/Interface/Acerola.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconAcerola = new ImageIcon(teste2.class.getResource(caminhoImagemAcerola));            
+        Image imagemAcerola = imagemIconAcerola.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaAcerola = new ImageIcon(imagemAcerola);
+        
+        
+        //###############  AMORA #########################
+        
+        String caminhoImagemAmora = "/Interface/Amora.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconAmora = new ImageIcon(teste2.class.getResource(caminhoImagemAmora));            
+        Image imagemAmora = imagemIconAmora.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaAmora = new ImageIcon(imagemAmora);
+        
+        
+        //###############  GOIABA #########################
+        
+        String caminhoImagemGoiaba = "/Interface/Goiaba.jpg"; // Supondo que a imagem do maracujá seja transparente
+        ImageIcon imagemIconGoiaba = new ImageIcon(teste2.class.getResource(caminhoImagemGoiaba));            
+        Image imagemGoiaba = imagemIconGoiaba.getImage().getScaledInstance(botaoLargura, botaoAltura, Image.SCALE_SMOOTH);
+        ImageIcon imagemRedimensionadaGoiaba = new ImageIcon(imagemGoiaba);
+        
+        
+       
+                    
+                    
         floresta floresta = new floresta(tamanho,pedra, maracujaTotal, maracujaChao,
     			laranjeira, laranja, abacateiro, abacate,
     			coqueiro, coco, aceroleira, acerola, 
@@ -161,6 +186,21 @@ public class teste2 {
                 	 botao.setIcon(imagemRedimensionadaGrama);  // Define a imagem do botão
                 }
                 
+                if(floresta.matriz[i][j].getFruta()instanceof Maracuja) {                                                        
+                	botao.setIcon(imagemRedimensionadaMaracuja);
+                } else if(floresta.matriz[i][j].getFruta()instanceof Laranja) {                                                        
+                	botao.setIcon(imagemRedimensionadaLaranja);
+                } else if(floresta.matriz[i][j].getFruta()instanceof Abacate) {                                                        
+                	botao.setIcon(imagemRedimensionadaAbacate);
+                } else if(floresta.matriz[i][j].getFruta()instanceof Coco) {                                                        
+                	botao.setIcon(imagemRedimensionadaCoco);
+                } else if(floresta.matriz[i][j].getFruta()instanceof Acerola) {                                                        
+                	botao.setIcon(imagemRedimensionadaAcerola);
+                } else if(floresta.matriz[i][j].getFruta()instanceof Amora) {                                                        
+                	botao.setIcon(imagemRedimensionadaAmora);
+                } else if(floresta.matriz[i][j].getFruta()instanceof Goiaba) {                                                        
+                	botao.setIcon(imagemRedimensionadaGoiaba);
+                } 
                
                 botao.setPreferredSize(new Dimension(botaoLargura, botaoAltura));  // Define o tamanho do botão
                 botao.setText("");  // Limpa o texto do botão (opcional)
@@ -219,11 +259,11 @@ public class teste2 {
 
     public static void main(String[] args) {
         // Solicita ao usuário para inserir o tamanho da matriz
-        String input = JOptionPane.showInputDialog("Insira o tamanho da matriz (ex: 6 para 6x6):");
-        int tamanhoMatriz;
+        //String input = JOptionPane.showInputDialog("Insira o tamanho da matriz (ex: 6 para 6x6):");
+        //int tamanhoMatriz;
 
         // Valida a entrada do usuário
-        try {
+        /*try {
             tamanhoMatriz = Integer.parseInt(input);
             if (tamanhoMatriz <= 0) {
                 throw new NumberFormatException("O tamanho deve ser maior que zero.");
@@ -231,13 +271,12 @@ public class teste2 {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Entrada inválida! O programa será encerrado.");
             return; // Encerra o programa em caso de entrada inválida
-        }
+        }*/
 
         // Criar a janela com a matriz
-        criarJanelaComMatriz(tamanhoMatriz,7,0,0,2,0,2,0,2,0,1,0,1,0,1,0,0,10);
+        criarJanelaComMatriz(6,7,3,1,2,2,2,1,2,1,1,3,1,2,1,1,0,10);
         
         
         
     }
 }
-
