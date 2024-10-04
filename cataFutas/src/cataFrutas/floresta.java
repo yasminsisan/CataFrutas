@@ -1,4 +1,7 @@
 package cataFrutas;
+
+
+
 import java.util.Random;
 import Frutas.*;
 import Jogador.*;
@@ -22,269 +25,224 @@ public class floresta{
 	private int qGoiaba;
 	private int mochila;
 	private float bicho;
-	
+	private boolean valido = true;
+	public int getNumMaracujaTotal() {
+		return this.qMaracujaTotal;
+	}
+	public int getNumMaracujaChao() {
+		return this.qMaracujaChao;
+	}
+	public boolean eValido() {
+		return this.valido;
+	}
 	public floresta(int dim,int pedra,int maracujaTotal,int maracujaChao,
 			int laranjeira,int laranja,int abacateiro,int abacate,
 			int coqueiro, int coco,  int aceroleira,int acerola, 
 			int amoreira,int amora, int goiabeira, int goiaba,
 			float bicho,int mochila) {
-		//gerando matriz do mapa e colocando as instâncias da classe posicao
-		Random random = new Random();
 		
-		
-		
-		
-		this.dimensao = dim;
-		
-		this.matriz = new posicao[this.dimensao][this.dimensao];  // cria a matriz que representa o mapa
-		
-		
-		this.qPedra = pedra;
-		this.qMaracujaTotal = maracujaTotal;
-		this.qMaracujaChao = maracujaChao;
-		this.qLaranjeira = laranjeira;
-		this.qLaranja = laranja;
-		this.qAbacateiro = abacateiro;
-		this.qAbacate = abacate;
-		this.qCoqueiro = coqueiro;
-		this.qCoco = coco;
-		this.qAceroleira = aceroleira;
-		this.qAcerola = acerola;
-		this.qAmoreira = amoreira;
-		this.qAmora = amora;
-		this.qGoiabeira =goiabeira;
-		this.qGoiaba = goiaba;
-		this.mochila = mochila;
-		this.bicho = bicho/100;
-
-		//########POSIÇÕES###########
-		for(int i = 0; i<this.dimensao; i++) {
-			for(int j = 0; j<this.dimensao; j++) {
-				this.matriz[i][j] = new posicao(); 
-			}                                      
-		}
-		
-		//#########PEDRAS###########
-		for(int i=0;i<this.qPedra;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setPedra();									
-		}
-		
-		//########GRAMAS#############
-		for(int i=0;i<this.dimensao;i++) {
-			for(int j=0;j<this.dimensao;j++) {
-				if(this.matriz[i][j].temPedra()==false) {
-					this.matriz[i][j].setGrama();
+		try {
+			//gerando matriz do mapa e colocando as instâncias da classe posicao
+			if(pedra + maracujaChao+laranjeira+laranja+abacateiro+abacate+coqueiro
+				+coco+aceroleira+acerola+amoreira+amora+goiabeira+goiaba>((dim*dim)-2)) {
+				this.valido = false;
+				return;
+			} else {
+				Random random = new Random();
+				this.dimensao = dim;
+				this.matriz = new posicao[this.dimensao][this.dimensao];  // cria a matriz que representa o mapa
+				this.qPedra = pedra;
+				this.qMaracujaTotal = maracujaTotal;
+				this.qMaracujaChao = maracujaChao;
+				this.qLaranjeira = laranjeira;
+				this.qLaranja = laranja;
+				this.qAbacateiro = abacateiro;
+				this.qAbacate = abacate;
+				this.qCoqueiro = coqueiro;
+				this.qCoco = coco;
+				this.qAceroleira = aceroleira;
+				this.qAcerola = acerola;
+				this.qAmoreira = amoreira;
+				this.qAmora = amora;
+				this.qGoiabeira =goiabeira;
+				this.qGoiaba = goiaba;
+				this.mochila = mochila;
+				this.bicho = bicho/100;
+				//########POSIÇÕES###########
+				for(int i = 0; i<this.dimensao; i++) {
+					for(int j = 0; j<this.dimensao; j++) {
+						this.matriz[i][j] = new posicao(); 
+					}                                      
+				}		
+				//#########PEDRAS###########
+				for(int i=0;i<this.qPedra;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setPedra();									
+				}	
+				//########GRAMAS#############
+				for(int i=0;i<this.dimensao;i++) {
+					for(int j=0;j<this.dimensao;j++) {
+						if(this.matriz[i][j].temPedra()==false) {
+							this.matriz[i][j].setGrama();
+						}
+					}
+				}
+				// ###########LARANJEIRAS############  
+				for(int i=0;i<this.qLaranjeira;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setArvore(new laranjeira());				
+				}
+				// ###########ABACATEIROS############ 
+				for(int i=0;i<this.qAbacateiro;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setArvore(new abacateiro());				
+				}
+				//###########COQUEIROS############ 
+				for(int i=0;i<this.qCoqueiro;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setArvore(new coqueiro());		
+				}			
+						//###########ACEROLEIRAS############  
+				for(int i=0;i<this.qAceroleira;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setArvore(new aceroleira());			
+				}			
+						//###########AMOREIRAS############  
+				for(int i=0;i<this.qAmoreira;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setArvore(new amoreira());		
+				}		
+						//###########GOIABEIRAS############  
+				for(int i=0;i<this.qGoiabeira;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setArvore(new goiabeira());
+							
+				}
+				//###########MARACUJÁS DO CHÃO############
+				for(int i=0;i<this.qMaracujaChao;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Maracuja());
+							
+				}
+				//###########LARANJAS############
+				for(int i=0;i<this.qLaranja;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Laranja());			
+				}
+				//###########ABACATES############
+				for(int i=0;i<this.qAbacate;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Abacate());			
+				}
+				//###########COCOS############
+				for(int i=0;i<this.qCoco;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Coco());			
+				}
+				//###########ACEROLAS############
+				for(int i=0;i<this.qAcerola;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Acerola());		
+				}
+				//###########AMORAS############
+				for(int i=0;i<this.qAmora;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Amora());		
+				}
+				//###########GOIABAS############
+				for(int i=0;i<this.qGoiaba;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setFruta(new Goiaba());		
+				}
+				//###########COMPETIDORES############
+				for(int i=0;i<2;i++) {
+					int j = random.nextInt(this.dimensao);
+					int k = random.nextInt(this.dimensao);
+					while(this.matriz[j][k].temCompetidor()==true) {
+						j = random.nextInt(this.dimensao);
+						k = random.nextInt(this.dimensao);
+					}						
+					this.matriz[j][k].setCompetidor("Nome",mochila);		
 				}
 			}
-		}
-		// ###########LARANJEIRAS############  
-		for(int i=0;i<this.qLaranjeira;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setArvore(new laranjeira());
-					
-		}
-		// ###########ABACATEIROS############ 
-		for(int i=0;i<this.qAbacateiro;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setArvore(new abacateiro());
-					
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+			this.valido = false;
 		}
 		
-		//###########COQUEIROS############ 
-		for(int i=0;i<this.qCoqueiro;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setArvore(new coqueiro());		
-		}	
 				
-				//###########ACEROLEIRAS############  
-		for(int i=0;i<this.qAceroleira;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setArvore(new aceroleira());
-					
-		}
-				
-				//###########AMOREIRAS############  
-		for(int i=0;i<this.qAmoreira;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setArvore(new amoreira());
-					
-		}
-				
-				//###########GOIABEIRAS############  
-		for(int i=0;i<this.qGoiabeira;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setArvore(new goiabeira());
-					
-		}
-		//###########MARACUJÁS DO CHÃO############
-		for(int i=0;i<this.qMaracujaChao;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Maracuja());
-					
-		}
-		//###########LARANJAS############
-		for(int i=0;i<this.qLaranja;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Laranja());
-					
-		}
-		//###########ABACATES############
-		for(int i=0;i<this.qAbacate;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Abacate());			
-		}
-		//###########COCOS############
-		for(int i=0;i<this.qCoco;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Coco());
-					
-		}
-		//###########ACEROLAS############
-		for(int i=0;i<this.qAcerola;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Acerola());
-					
-		}
-		//###########AMORAS############
-		for(int i=0;i<this.qAmora;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Amora());
-					
-		}
-		//###########GOIABAS############
-		for(int i=0;i<this.qGoiaba;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temPedra() == true||this.matriz[j][k].temArvore()==true||this.matriz[j][k].temFruta()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setFruta(new Goiaba());
-					
-		}
-		
-		//###########COMPETIDORES############
-		for(int i=0;i<2;i++) {
-			int j = random.nextInt(this.dimensao);
-			int k = random.nextInt(this.dimensao);
-			while(this.matriz[j][k].temCompetidor()==true) {
-				j = random.nextInt(this.dimensao);
-				k = random.nextInt(this.dimensao);
-			}						
-			this.matriz[j][k].setCompetidor("Nome",mochila);
-					
-		}
 	}
-	
-	public static void main(String[] args) { //o método main aqui é usado para fazer testes no algoritmo da classe floresta.
-		floresta floresta = new floresta(6,7,3,1,2,1,2,3,2,1,1,2,1,1,1,1,25,10);
-		
-		for(int i=0;i<floresta.dimensao;i++) {
-			for(int j=0;j<floresta.dimensao;j++) {
-				if(floresta.matriz[i][j].temPedra()==true) {
-					System.out.println("PEDRA  i: "+i+" j: "+j);
-				} else if(floresta.matriz[i][j].getArvore() instanceof coqueiro) { 
-					System.out.println("COQUEIRO  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getArvore() instanceof abacateiro) { 
-					System.out.println("ABACATEIRO  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getArvore() instanceof aceroleira) { 
-					System.out.println("ACEROLEIRA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getArvore() instanceof amoreira) { 
-					System.out.println("AMOREIRA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getArvore() instanceof goiabeira) { 
-					System.out.println("GOIABEIRA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getArvore() instanceof laranjeira) { 
-					System.out.println("LARANJEIRA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Coco) { 
-					System.out.println("COCO  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Abacate) { 
-					System.out.println("ABACATE  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Acerola) { 
-					System.out.println("ACEROLA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Amora) { 
-					System.out.println("AMORA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Goiaba) { 
-					System.out.println("GOIABA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Laranja) { 
-					System.out.println("LARANJA  i: "+i+" j: "+j);
-				}else if(floresta.matriz[i][j].getFruta() instanceof Maracuja) { 
-					System.out.println("MARACUJA  i: "+i+" j: "+j);
-				}
-				
-				if(floresta.matriz[i][j].temCompetidor()==true) { 
-					System.out.println("COMPETIDOR  i: "+i+" j: "+j);
-				}
-				
-				
-				
-			}
-		}
+}
 		
 	}	
 	
