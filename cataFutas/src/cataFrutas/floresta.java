@@ -27,7 +27,7 @@ public class floresta{
 			int laranjeira,int laranja,int abacateiro,int abacate,
 			int coqueiro, int coco,  int aceroleira,int acerola, 
 			int amoreira,int amora, int goiabeira, int goiaba,
-			int bicho,int mochila) {
+			float bicho,int mochila) {
 		//gerando matriz do mapa e colocando as instâncias da classe posicao
 		Random random = new Random();
 		
@@ -55,7 +55,7 @@ public class floresta{
 		this.qGoiabeira =goiabeira;
 		this.qGoiaba = goiaba;
 		this.mochila = mochila;
-		this.bicho = (float)bicho/100;
+		this.bicho = bicho/100;
 
 		//########POSIÇÕES###########
 		for(int i = 0; i<this.dimensao; i++) {
