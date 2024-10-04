@@ -7,11 +7,31 @@ import java.awt.*;
 public class teste2 {
 
     // Função para criar a interface gráfica com a matriz
-    public static void criarJanelaComMatriz(int tamanho,int pedra,int maracujaTotal,int maracujaChao,
-			int laranjeira,int laranja,int abacateiro,int abacate,
-			int coqueiro, int coco,  int aceroleira,int acerola, 
-			int amoreira,int amora, int goiabeira, int goiaba,
-			int bicho,int mochila) {
+    public static void criarJanelaComMatriz(Configuracao config) {
+
+	/**
+    	 * Obtendo as informações do objeto configuracao
+    	 */
+    	int tamanho = config.getDimensaoMatriz();
+        int pedra = config.getQuantPedras();
+        int maracujaTotal = config.getQuantMaracujaTotal();
+        int maracujaChao = config.getQuantMaracujaInicio();
+        int laranjeira = config.getQuantLaranjeira();
+        int laranja = config.getQuantLaranja();
+        int abacateiro = config.getQuantAbacateira();
+        int abacate = config.getQuantAbacate();
+        int coqueiro = config.getQuantCoqueiro();
+        int coco = config.getQuantCoco();
+        int aceroleira = config.getQuantAceroleira();
+        int acerola = config.getQuantAcerola();
+        int amoreira = config.getQuantAmoreira();
+        int amora = config.getQuantAmora();
+        int goiabeira = config.getQuantGoiabeira();
+        int goiaba = config.getQuantGoiaba();
+        float bicho = config.getChanceBichada();
+        int mochila = config.getTamanhoMochila();
+
+
         JFrame frame = new JFrame("Tabuleiro " + tamanho + "x" + tamanho);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 800);  // Define o tamanho fixo da janela
@@ -257,26 +277,43 @@ public class teste2 {
         
     }
 
-    public static void main(String[] args) {
-        // Solicita ao usuário para inserir o tamanho da matriz
-        //String input = JOptionPane.showInputDialog("Insira o tamanho da matriz (ex: 6 para 6x6):");
-        //int tamanhoMatriz;
+     public static void main(String[] args) {
+    	JFrame frame = new JFrame("Selecionar Arquivo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+        
+        JButton botaoSelecionar = new JButton("Selecionar Arquivo");
 
-        // Valida a entrada do usuário
-        /*try {
-            tamanhoMatriz = Integer.parseInt(input);
-            if (tamanhoMatriz <= 0) {
-                throw new NumberFormatException("O tamanho deve ser maior que zero.");
+        // Adiciona a funcionalidade de abrir o explorador de arquivos ao clicar no botão
+        botaoSelecionar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Cria um JFileChooser para permitir a seleção do arquivo
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Selecione o arquivo de configuração");
+
+                // Abre o explorador de arquivos e espera a seleção
+                int resultado = fileChooser.showOpenDialog(null);
+
+                // Verifica se o usuário selecionou um arquivo
+                if (resultado == JFileChooser.APPROVE_OPTION) {
+                    File arquivoSelecionado = fileChooser.getSelectedFile();
+                    JOptionPane.showMessageDialog(null, "Arquivo selecionado: " + arquivoSelecionado.getAbsolutePath());
+                    
+                    Arquivo arquivo = new Arquivo(arquivoSelecionado);
+                    Configuracao config = arquivo.lerArquivo();
+                    
+                    criarJanelaComMatriz(config);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.");
+                }
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Entrada inválida! O programa será encerrado.");
-            return; // Encerra o programa em caso de entrada inválida
-        }*/
-
-        // Criar a janela com a matriz
-        criarJanelaComMatriz(6,7,3,1,2,2,2,1,2,1,1,3,1,2,1,1,0,10);
+        });
         
-        
+        frame.add(botaoSelecionar);
+        frame.setLocationRelativeTo(null);  // Centraliza a janela
+        frame.setVisible(true);
         
     }
 }
