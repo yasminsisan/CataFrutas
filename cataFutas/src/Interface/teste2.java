@@ -181,9 +181,11 @@ public class teste2 {
     			coqueiro, coco, aceroleira, acerola, 
     			 amoreira, amora,  goiabeira, goiaba,
     			 bicho,mochila);
-        
-        
-        // Criar uma matriz de botões
+        if(!floresta.eValido()) {
+        	JOptionPane.showMessageDialog(frame, "Entradas Inválidas");
+        	return;
+        } else {
+        	// Criar uma matriz de botões
         for (int i = 0; i < tamanho; i++) {
             for (int j = 0; j < tamanho; j++) {
                 JButton botao = new JButton();  // Cria um novo botão
@@ -274,6 +276,7 @@ public class teste2 {
         
 			}
 		}
+        }
         
     }
 
