@@ -1,12 +1,14 @@
 package Interface;
 import cataFrutas.*;
-
 import Frutas.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
 
 
 public class teste2 {
@@ -44,11 +46,15 @@ public class teste2 {
         
         // Painel reservado para o tabuleiro, com tamanho fixo
         JPanel tabuleiroPanel = new JPanel();
-        tabuleiroPanel.setBounds(100, 50, 600, 600);  // Define o espaço reservado para o tabuleiro
+        tabuleiroPanel.setBounds(100, 0, 600, 600);  // Define o espaço reservado para o tabuleiro
         tabuleiroPanel.setLayout(new GridLayout(tamanho, tamanho));  // Define layout em grade
         
         int botaoLargura = tabuleiroPanel.getWidth() / tamanho;
         int botaoAltura = tabuleiroPanel.getHeight() / tamanho;
+        
+        JButton botaoArmazenar = new JButton("Salvar Mapa");
+        botaoArmazenar.setBounds(300,650,200,100);
+        
         
         //################### IMAGEM DA GRAMA ###########################
        
@@ -242,10 +248,48 @@ public class teste2 {
                 tabuleiroPanel.add(botao);  // Adiciona o botão ao painel do tabuleiro
             }
         }
+        
+        botaoArmazenar.addActionListener(j -> {
+        	
+        	JFileChooser fileChooser = new JFileChooser();
+        	fileChooser.setCurrentDirectory(new java.io.File("."));
+        	fileChooser.setDialogTitle("Selecione a Pasta");
+        	fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        	fileChooser.setAcceptAllFileFilterUsed(false);
+        	
+        	
+        	int resultado = fileChooser.showOpenDialog(null);
+        	
+        	File selectedFolder = fileChooser.getSelectedFile();
+        	
+        	String caminho = selectedFolder.getAbsolutePath();
+        	caminho = caminho.replaceAll("/","\\");
+        	caminho +="\\Mapa.txt";
+        	
+        	
+        	String conteudo ="dimensao "+tamanho+"\npedras "+pedra+"\nmaracuja "
+        	+maracujaTotal+" "+maracujaChao+"\nlaranja "
+        	+laranjeira+" "+laranja+"\nabacate "+abacateiro+" "+abacate
+        	+"\ncoco "+coqueiro+" "+coco+"\nacerola "+aceroleira+" "+acerola+"\namora "
+        	+amoreira+" "+amora+"\ngoiaba "+goiabeira+" "+goiaba+"\nbichadas "+ (int) (bicho*100)
+        	+"\nmochila "+mochila;
+        	
+        	
+        	try {
+				FileWriter writer = new FileWriter(caminho);
+				writer.write(conteudo);
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        });
 
         frame.add(tabuleiroPanel);  // Adiciona o painel do tabuleiro à janela
         frame.setLocationRelativeTo(null);  // Centraliza a janela na tela
         frame.setVisible(true);  // Torna a janela visível
+        frame.add(botaoArmazenar);
         
         for(int i=0;i<tamanho;i++) {
 			for(int j=0;j<tamanho;j++) {
@@ -328,7 +372,6 @@ public class teste2 {
         botaoSetar.addActionListener(new ActionListener() {
         	@Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Deu certo");
                 
              // Solicita ao usuário para inserir o tamanho da matriz
                 
