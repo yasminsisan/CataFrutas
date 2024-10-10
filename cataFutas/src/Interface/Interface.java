@@ -359,11 +359,18 @@ public class Interface {
                     JOptionPane.showMessageDialog(null, "Arquivo selecionado: " + arquivoSelecionado.getAbsolutePath());
                     
                     Arquivo arquivo = new Arquivo(arquivoSelecionado);
-                    Configuracao config = arquivo.lerArquivo();
+                    
+                    try {
+                    	Configuracao config = arquivo.lerArquivo();
+                    	criarJanelaComMatriz(config);
+                    }catch(IllegalArgumentException k) {
+                    	JOptionPane.showMessageDialog(null, k.getMessage());
+                    }
+                   
                     
                     
                    // try {
-                    	criarJanelaComMatriz(config);
+                    	
                    // } catch (IllegalArgumentException k) {
                    // 	JOptionPane.showMessageDialog(null, k.getMessage());
                    // }
@@ -413,7 +420,7 @@ public class Interface {
                 		config.setDimensaoMatriz(tamanhoMatriz); 
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
-                		return;
+                	return;
                 	}
                 	
                 } catch(IllegalArgumentException k) {
@@ -423,8 +430,9 @@ public class Interface {
                 String inputPed = JOptionPane.showInputDialog("Insira a quantidade de Pedras");
                 try {
                 	try {
-                		config.setQuantPedras(qPedras); 
                 		qPedras = Integer.parseInt(inputPed);
+                		config.setQuantPedras(qPedras); 
+                		
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -436,8 +444,9 @@ public class Interface {
                  String inputMarTot = JOptionPane.showInputDialog("Insira a quantidade total de Maracujás"); 
                 try {
                 	try {
-                		config.setQuantMaracujaTotal(qMaracujaTotal); 
                 		qMaracujaTotal = Integer.parseInt(inputMarTot);
+                		config.setQuantMaracujaTotal(qMaracujaTotal); 
+                		
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -450,8 +459,9 @@ public class Interface {
                 String inputMarChao = JOptionPane.showInputDialog("Insira a quantidade de Maracujás do Chão");
                 try {
                 	try {
-                		config.setQuantMaracujaInicio(qMaracujaChao); 
                 		qMaracujaChao = Integer.parseInt(inputMarChao);
+                		config.setQuantMaracujaInicio(qMaracujaChao);
+                		
                 	} catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -465,6 +475,8 @@ public class Interface {
                 	try {
                 		qLaranjeira = Integer.parseInt(inputLara);
                 		config.setQuantLaranjeira(qLaranjeira); 
+                		
+                		
                 	} catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -476,8 +488,9 @@ public class Interface {
                 String inputLar = JOptionPane.showInputDialog("Insira a quantidade de Laranjas");  
                 try {
                 	try {
-                		config.setQuantLaranja(qLaranja); 
                 		qLaranja = Integer.parseInt(inputLar);
+                		config.setQuantLaranja(qLaranja); 
+                		
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -489,8 +502,9 @@ public class Interface {
                 String inputAbac = JOptionPane.showInputDialog("Insira a quantidade de Abacateiros");  
                 try {
                 	try {
-                		config.setQuantAbacateira(qAbacateiro); 
                 		qAbacateiro = Integer.parseInt(inputAbac);
+                		config.setQuantAbacateira(qAbacateiro); 
+                		
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -502,8 +516,9 @@ public class Interface {
                 String inputAba = JOptionPane.showInputDialog("Insira a quantidade de Abacates");     
                 try {
                 	try {
-                		config.setQuantAbacate(qAbacate); 
                 		qAbacate = Integer.parseInt(inputAba);
+                		config.setQuantAbacate(qAbacate); 
+                		
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -515,8 +530,9 @@ public class Interface {
                 String inputCoq = JOptionPane.showInputDialog("Insira a quantidade de Coqueiros");
                 try {
                 	try {
-                		config.setQuantCoqueiro(qCoqueiro); 
                 		qCoqueiro = Integer.parseInt(inputCoq);
+                		config.setQuantCoqueiro(qCoqueiro); 
+                		
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
@@ -528,6 +544,7 @@ public class Interface {
                 String inputCoco = JOptionPane.showInputDialog("Insira a quantidade de Cocos");  
                 try {
                 	try {
+                		
                 		qCoco = Integer.parseInt(inputCoco);
                 		config.setQuantCoco(qCoco); 
                 	}catch(NumberFormatException j) {
