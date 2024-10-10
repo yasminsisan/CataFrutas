@@ -1,5 +1,6 @@
 package Interface;
 import Frutas.*;
+import java.lang.NumberFormatException;
 import Terreno.*;
 import javax.swing.*;
 import Arvores.*;
@@ -194,10 +195,6 @@ public class Interface {
     			 amoreira, amora,  goiabeira, goiaba,
     			 bicho,mochila);
         
-        if(!floresta.eValido()) {
-        	JOptionPane.showMessageDialog(frame, "Entradas Inválidas");
-        	return;
-        } else {
         	// Criar uma matriz de botões
         for (int i = 0; i < tamanho; i++) {
             for (int j = 0; j < tamanho; j++) {
@@ -327,7 +324,7 @@ public class Interface {
         
 			}
 		}
-        }
+        
         
         
         
@@ -363,7 +360,16 @@ public class Interface {
                     Arquivo arquivo = new Arquivo(arquivoSelecionado);
                     Configuracao config = arquivo.lerArquivo();
                     
-                    criarJanelaComMatriz(config);
+                    
+                   // try {
+                    	criarJanelaComMatriz(config);
+                   // } catch (IllegalArgumentException k) {
+                   // 	JOptionPane.showMessageDialog(null, k.getMessage());
+                   // }
+                    	
+                    
+                    
+                    
                     frame.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.");
@@ -397,207 +403,246 @@ public class Interface {
                 int mochila=0;
                 // Valida a entrada do usuário
                 
+                Configuracao config = new Configuracao();
+ 
                 String inputTam = JOptionPane.showInputDialog("Insira o tamanho da matriz (ex: 6 para 6x6):");
                 try {
-                    tamanhoMatriz = Integer.parseInt(inputTam);
-                    
-                    if (tamanhoMatriz <= 0) {
-                        throw new NumberFormatException("O tamanho deve ser maior que zero.");
-                    }
-                } catch (NumberFormatException f) {
-                    JOptionPane.showMessageDialog(null, "Entrada inválida! O programa será encerrado.");
-                    return; // Encerra o programa em caso de entrada inválida
+                	try {
+                		tamanhoMatriz = Integer.parseInt(inputTam);
+                		config.setDimensaoMatriz(tamanhoMatriz); 	
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}
+                	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
                 }
-                
                 String inputPed = JOptionPane.showInputDialog("Insira a quantidade de Pedras");
                 try {
-                	qPedras = Integer.parseInt(inputPed);
-                	
-                	if(qPedras <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
+                	try {
+                		config.setQuantPedras(qPedras); 
+                		qPedras = Integer.parseInt(inputPed);
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
                 	}
-                } catch(NumberFormatException g){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
                 }
-                
-                String inputMarTot = JOptionPane.showInputDialog("Insira a quantidade total de Maracujás");
+                 String inputMarTot = JOptionPane.showInputDialog("Insira a quantidade total de Maracujás"); 
                 try {
-                	qMaracujaTotal = Integer.parseInt(inputMarTot);
+                	try {
+                		config.setQuantMaracujaTotal(qMaracujaTotal); 
+                		qMaracujaTotal = Integer.parseInt(inputMarTot);
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}         		
                 	
-                	if(qMaracujaTotal <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException h){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
                 String inputMarChao = JOptionPane.showInputDialog("Insira a quantidade de Maracujás do Chão");
                 try {
-                	qMaracujaChao = Integer.parseInt(inputMarChao);
-                	
-                	if(qMaracujaChao <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException i){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputLara = JOptionPane.showInputDialog("Insira a quantidade de Laranjeiras");
+                	try {
+                		config.setQuantMaracujaInicio(qMaracujaChao); 
+                		qMaracujaChao = Integer.parseInt(inputMarChao);
+                	} catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}    	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputLara = JOptionPane.showInputDialog("Insira a quantidade de Laranjeiras");  
                 try {
-                	qLaranjeira = Integer.parseInt(inputLara);
-                	
-                	if(qLaranjeira <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException j){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputLar = JOptionPane.showInputDialog("Insira a quantidade de Laranjas");
+                	try {
+                		qLaranjeira = Integer.parseInt(inputLara);
+                		config.setQuantLaranjeira(qLaranjeira); 
+                	} catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}     	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputLar = JOptionPane.showInputDialog("Insira a quantidade de Laranjas");  
                 try {
-                	qLaranja = Integer.parseInt(inputLar);
-                	
-                	if(qLaranja <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputAbac = JOptionPane.showInputDialog("Insira a quantidade de Abacateiros");
+                	try {
+                		config.setQuantLaranja(qLaranja); 
+                		qLaranja = Integer.parseInt(inputLar);
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}       	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                }  
+                String inputAbac = JOptionPane.showInputDialog("Insira a quantidade de Abacateiros");  
                 try {
-                	qAbacateiro = Integer.parseInt(inputAbac);
-                	
-                	if(qAbacateiro <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputAba = JOptionPane.showInputDialog("Insira a quantidade de Abacates");
+                	try {
+                		config.setQuantAbacateira(qAbacateiro); 
+                		qAbacateiro = Integer.parseInt(inputAbac);
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	} 	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputAba = JOptionPane.showInputDialog("Insira a quantidade de Abacates");     
                 try {
-                	qAbacate = Integer.parseInt(inputAba);
-                	
-                	if(qAbacate <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
+                	try {
+                		config.setQuantAbacate(qAbacate); 
+                		qAbacate = Integer.parseInt(inputAba);
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}          	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
                 String inputCoq = JOptionPane.showInputDialog("Insira a quantidade de Coqueiros");
                 try {
-                	qCoqueiro = Integer.parseInt(inputCoq);
-                	
-                	if(qCoqueiro <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputCoco = JOptionPane.showInputDialog("Insira a quantidade de Cocos");
+                	try {
+                		config.setQuantCoqueiro(qCoqueiro); 
+                		qCoqueiro = Integer.parseInt(inputCoq);
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}          	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputCoco = JOptionPane.showInputDialog("Insira a quantidade de Cocos");  
                 try {
-                	qCoco = Integer.parseInt(inputCoco);
-                	
-                	if(qCoco <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
+                	try {
+                		qCoco = Integer.parseInt(inputCoco);
+                		config.setQuantCoco(qCoco); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}     	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
                 }
-                
-                String inputAcer = JOptionPane.showInputDialog("Insira a quantidade de Aceroleiras");
+                String inputAcer = JOptionPane.showInputDialog("Insira a quantidade de Aceroleiras");  
                 try {
-                	qAceroleira = Integer.parseInt(inputAcer);
-                	
-                	if(qAceroleira <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
+                	try {
+                		qAceroleira = Integer.parseInt(inputAcer);
+                		config.setQuantAceroleira(qAceroleira); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}      	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
                 String inputAce = JOptionPane.showInputDialog("Insira a quantidade de Acerolas");
                 try {
-                	qAcerola = Integer.parseInt(inputAce);
-                	
-                	if(qAcerola <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputAmor = JOptionPane.showInputDialog("Insira a quantidade de Amoreiras");
+                	try {
+                		qAcerola = Integer.parseInt(inputAce);
+                		config.setQuantAcerola(qAcerola); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}      	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputAmor = JOptionPane.showInputDialog("Insira a quantidade de Amoreiras"); 
                 try {
-                	qAmoreira = Integer.parseInt(inputAmor);
-                	
-                	if(qAmoreira <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputAmo = JOptionPane.showInputDialog("Insira a quantidade de Amoras");
+                	try {
+                		qAmoreira = Integer.parseInt(inputAmor);
+                		config.setQuantAmoreira(qAmoreira); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}         	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputAmo = JOptionPane.showInputDialog("Insira a quantidade de Amoras");    
                 try {
-                	qAmora = Integer.parseInt(inputAmo);
-                	
-                	if(qAmora <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputGoia = JOptionPane.showInputDialog("Insira a quantidade de Goiabeiras");
+                	try {
+                		qAmora = Integer.parseInt(inputAmo);
+                		config.setQuantAmora(qAmora); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}         	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputGoia = JOptionPane.showInputDialog("Insira a quantidade de Goiabeiras"); 
                 try {
-                	qGoiabeira = Integer.parseInt(inputGoia);
-                	
-                	if(qGoiabeira <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputGoi = JOptionPane.showInputDialog("Insira a quantidade de Goiabas");
+                	try {
+                		qGoiabeira = Integer.parseInt(inputGoia);
+                		config.setQuantGoiabeira(qGoiabeira); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}         	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputGoi = JOptionPane.showInputDialog("Insira a quantidade de Goiabas");    
                 try {
-                	qGoiaba = Integer.parseInt(inputGoi);
-                	
-                	if(qGoiaba <0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
-                String inputBicho = JOptionPane.showInputDialog("Insira a probabilidade das frutas estarem bichadas");
+                	try {
+                		qGoiaba = Integer.parseInt(inputGoi);
+                		config.setQuantGoiaba(qGoiaba); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}   	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
+                String inputBicho = JOptionPane.showInputDialog("Insira a probabilidade das frutas estarem bichadas"); 
                 try {
-                	bicho = Float.parseFloat(inputBicho);
-                	
-                	if(bicho <0) {
-                		throw new NumberFormatException("A probabilidade deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
-                }
-                
+                	try {
+                		bicho = Float.parseFloat(inputBicho);
+                		config.setChanceBichada(bicho); 
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}          	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
+                } 
                 String inputMochila = JOptionPane.showInputDialog("Insira o tamanho da mochila");
                 try {
-                	mochila = Integer.parseInt(inputMochila);
-                	
-                	if(mochila <=0) {
-                		throw new NumberFormatException("O tamanho deve ser maior ou igual a zero.");
-                	}
-                } catch(NumberFormatException k){
-                	JOptionPane.showMessageDialog(null, "Entrada inválida! Insira um valor maior ou igual a zero.");
+                	try {
+                		mochila = Integer.parseInt(inputMochila);
+                		config.setTamanhoMochila(mochila); 
+                		
+                	}catch(NumberFormatException j) {
+                		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
+                		return;
+                	}    	
+                } catch(IllegalArgumentException k) {
+                	JOptionPane.showMessageDialog(null, k.getMessage());
+                	return;
                 }
-                
-                Configuracao config = new Configuracao();
-                config.setDimensaoMatriz(tamanhoMatriz);
+
                 config.setQuantPedras(qPedras);
                 config.setQuantMaracujaTotal(qMaracujaTotal);
                 config.setQuantMaracujaInicio(qMaracujaChao);
@@ -616,9 +661,16 @@ public class Interface {
                 config.setChanceBichada(bicho);
                 config.setTamanhoMochila(mochila);
                 
-                criarJanelaComMatriz(config);
+                try {
+                	criarJanelaComMatriz(config);
+                } catch (IllegalArgumentException j) {
+                	JOptionPane.showMessageDialog(null,j.getMessage());
+                	return;
+                }
+                
                 frame.setVisible(false);
                 
+    	                
             }
         });
         
