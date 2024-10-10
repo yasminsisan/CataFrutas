@@ -30,19 +30,7 @@ public class posicao {
 	
 	
 	public void setArvore(arvore arvore) {
-		if(arvore instanceof coqueiro ) {
-			this.arvore = new coqueiro();
-		} else if(arvore instanceof abacateiro) {
-			this.arvore = new abacateiro();
-		} else if(arvore instanceof laranjeira) {
-			this.arvore = new laranjeira();
-		}else if(arvore instanceof aceroleira) {
-			this.arvore = new aceroleira();
-		}else if(arvore instanceof amoreira) {
-			this.arvore = new amoreira();
-		}else if(arvore instanceof goiabeira) {
-			this.arvore = new goiabeira();
-		}
+		this.arvore = arvore;
 	}
 	
 	
@@ -56,21 +44,7 @@ public class posicao {
 	}
 	
 	public void setFruta(Fruta fruta) {
-		if(fruta instanceof Maracuja ) {
-			this.fruta = new Maracuja();
-		} else if(fruta instanceof Laranja) {
-			this.fruta = new Laranja();
-		} else if(fruta instanceof Abacate) {
-			this.fruta = new Abacate();
-		}else if(fruta instanceof Coco) {
-			this.fruta = new Coco();
-		}else if(fruta instanceof Acerola) {
-			this.fruta = new Acerola();
-		}else if(fruta instanceof Amora) {
-			this.fruta = new Amora();
-		}else if(fruta instanceof Goiaba) {
-			this.fruta = new Goiaba();
-		}
+		this.fruta = fruta;
 	}
 	public boolean temFruta() {
 		return this.fruta != null;
