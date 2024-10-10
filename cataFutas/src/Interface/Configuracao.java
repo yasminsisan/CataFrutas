@@ -51,7 +51,7 @@ public class Configuracao {
 	 */
 	public void setQuantPedras(int quantPedras) {
 		if (quantPedras < 0) {
-			throw new IllegalArgumentException("Valor de quantPedras < 0");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantPedras = quantPedras;
@@ -81,7 +81,7 @@ public class Configuracao {
 	public void setChanceBichada(float chanceBichada) {
 		
 		if (chanceBichada < 0) {
-			throw new IllegalArgumentException("Valor de chanceBichada < 0");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.chanceBichada = chanceBichada/100;
@@ -112,7 +112,7 @@ public class Configuracao {
 		if (tamanhoMochila > 0) {
 			this.tamanhoMochila = tamanhoMochila;
 		} else {
-			throw new IllegalArgumentException("Tamanho da mochila <= 0");
+			throw new IllegalArgumentException("O tamanho da mochila deve ser maior que zero");
 		}
 	}
 	
@@ -148,7 +148,9 @@ public class Configuracao {
 	 */
 	public void setQuantMaracujaInicio(int quantMaracujaInicio) {
 		if (quantMaracujaInicio < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantMaracujaInicio");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
+		} else if(quantMaracujaInicio < quantMaracujaTotal) {
+			throw new IllegalArgumentException("Erro! O número de Maracujás do chão não pode ser maior que o total de Maracujás da partida");
 		}
 		
 		this.quantMaracujaInicio = quantMaracujaInicio;
@@ -171,7 +173,7 @@ public class Configuracao {
 	 */
 	public void setQuantAcerola(int quantAcerola) {
 		if (quantAcerola < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantAcerola");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantAcerola = quantAcerola;
@@ -194,7 +196,7 @@ public class Configuracao {
 	 */
 	public void setQuantAmora(int quantAmora) {
 		if (quantAmora < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantAmora");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantAmora = quantAmora;
@@ -217,7 +219,7 @@ public class Configuracao {
 	 */
 	public void setQuantCoco(int quantCoco) {
 		if (quantCoco < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantCoco");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantCoco = quantCoco;
@@ -240,7 +242,7 @@ public class Configuracao {
 	 */
 	public void setQuantAbacate(int quantAbacate) {
 		if (quantAbacate < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantAbacate");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantAbacate = quantAbacate;
@@ -263,7 +265,7 @@ public class Configuracao {
 	 */
 	public void setQuantLaranja(int quantLaranja) {
 		if (quantLaranja < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantLaranja");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantLaranja = quantLaranja;
@@ -286,7 +288,7 @@ public class Configuracao {
 	 */
 	public void setQuantGoiaba(int quantGoiaba) {
 		if (quantGoiaba < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantGoiaba");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantGoiaba = quantGoiaba;
@@ -315,7 +317,7 @@ public class Configuracao {
 	 */
 	public void setQuantGoiabeira(int quantGoiabeira) {
 		if (quantGoiabeira < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantGoiabeira");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantGoiabeira = quantGoiabeira;
@@ -338,7 +340,7 @@ public class Configuracao {
 	 */
 	public void setQuantLaranjeira(int quantLaranjeira) {
 		if (quantLaranjeira < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantLaranjeira");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantLaranjeira = quantLaranjeira;
@@ -361,7 +363,7 @@ public class Configuracao {
 	 */
 	public void setQuantAbacateira(int quantAbacateira) {
 		if (quantAbacateira < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantAbacateira");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantAbacateira = quantAbacateira;
@@ -384,7 +386,7 @@ public class Configuracao {
 	 */
 	public void setQuantCoqueiro(int quantCoqueiro) {
 		if (quantCoqueiro < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantCoqueiro");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantCoqueiro = quantCoqueiro;
@@ -407,7 +409,7 @@ public class Configuracao {
 	 */
 	public void setQuantAmoreira(int quantAmoreira) {
 		if (quantAmoreira < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantAmoreira");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantAmoreira = quantAmoreira;
@@ -430,7 +432,7 @@ public class Configuracao {
 	 */
 	public void setQuantAceroleira(int quantAceroleira) {
 		if (quantAceroleira < 0) {
-			throw new IllegalArgumentException("Valor inválido de aceroleiras");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantAceroleira = quantAceroleira;
@@ -453,7 +455,7 @@ public class Configuracao {
 	 */
 	public void setQuantMaracujaTotal(int quantMaracujaTotal) {
 		if (quantMaracujaTotal < 0) {
-			throw new IllegalArgumentException("Valor inválido de quantMaracujaTotal");
+			throw new IllegalArgumentException("Valor inválido! Insira um valor maior ou igual a zero.");
 		}
 		
 		this.quantMaracujaTotal = quantMaracujaTotal;
@@ -476,7 +478,7 @@ public class Configuracao {
 	 */
 	public void setDimensaoMatriz(int dimensaoMatriz) {
 		if (dimensaoMatriz < 3) {
-			throw new IllegalArgumentException("Valor inválido de dimensaoMatriz");
+			throw new IllegalArgumentException("Valor inválido! A dimensão deve ser maior ou igual a 3");
 		}
 		
 		this.dimensaoMatriz = dimensaoMatriz;
