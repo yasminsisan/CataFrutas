@@ -40,9 +40,9 @@ public class Arquivo {
                         break;
                     case "maracuja":
                     	int frutaMaracujaTotal = Integer.parseInt(partes[1]); 
-                        int frutaMaracujaInicio = Integer.parseInt(partes[2]);    
-                        config.setQuantMaracujaInicio(frutaMaracujaInicio);
+                        int frutaMaracujaInicio = Integer.parseInt(partes[2]);
                         config.setQuantMaracujaTotal(frutaMaracujaTotal);
+                        config.setQuantMaracujaInicio(frutaMaracujaInicio);
                         break;
                     case "laranja":
                         int frutaLaranja = Integer.parseInt(partes[2]);
