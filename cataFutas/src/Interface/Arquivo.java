@@ -39,8 +39,8 @@ public class Arquivo {
                         System.out.println("Dimensão lida: " + dim); // Log de depuração
                         break;
                     case "maracuja":
+                    	int frutaMaracujaTotal = Integer.parseInt(partes[1]); 
                         int frutaMaracujaInicio = Integer.parseInt(partes[2]);    
-                        int frutaMaracujaTotal = Integer.parseInt(partes[1]);    
                         config.setQuantMaracujaInicio(frutaMaracujaInicio);
                         config.setQuantMaracujaTotal(frutaMaracujaTotal);
                         break;
