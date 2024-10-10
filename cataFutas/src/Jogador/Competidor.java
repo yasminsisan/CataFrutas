@@ -4,16 +4,21 @@ import Frutas.*;
 
 /**
   * Classe que representa o competidor do jogo, listando seus atributos e possíveis ações
+  * @author Felipe Tojal
  */
 public class Competidor {
-	
+	//atributos da instância
 	private String nome;
 	private int pontosMovimento;
 	private int pontosVitoria;
 	private int forca;
 	private Mochila mochila;
 	private boolean comeuBichada;
-	
+	/**
+	 * Construtor para objetos da classe Competidor
+	 * @param Nome do Competidor
+	 * @param Capacidade da mochila do competidor
+	 */
 	public Competidor(String nome, int tamanhoMochila) {
 		this.nome = nome;
 		this.pontosMovimento = 0;
@@ -26,7 +31,7 @@ public class Competidor {
 	/**
 	 * Método que torna o atributo 'comeuBichada' em false
 	 * Utilizado quando o usuário comer uma fruta antídoto
-	 * @author lfcor
+	 * @author Felipe Tojal
 	 */
 	public void curarCompetidor() {
 		this.comeuBichada = false;
@@ -35,7 +40,7 @@ public class Competidor {
 	/**
 	 * Método que torna o atributo 'comeuBichada' em true
 	 * Utilizado quando o usuário comer uma fruta bichada
-	 * @author lfcor
+	 * 
 	 */
 	public void ficarDoente() {
 		this.comeuBichada = true;
@@ -44,7 +49,7 @@ public class Competidor {
 	/**
 	 * Método que aumenta a força do competidor em 1 ponto
 	 * Esse efeito é causado por todas as frutas
-	 * @author lfcor
+	 * @author Felipe Tojal
 	 */
 	public void incrementaPoderForça() {
 		this.forca++;
@@ -53,7 +58,7 @@ public class Competidor {
 	/**
 	 * Método que dobra os pontos de movmento do competidor
 	 * Esse efeito é causado pela fruta Coco
-	 * @author lfcor
+	 * 
 	 */
 	public void dobrarPontosMovimento() {
 		this.pontosMovimento *= 2;
@@ -62,7 +67,7 @@ public class Competidor {
 	/**
 	 * Método que dobra a força do competidor
 	 * Esse efeito é causado pela fruta Abacate
-	 * @author lfcor
+	 * 
 	 */
 	public void dobrarForca() {
 		this.forca *= 2;
@@ -71,7 +76,7 @@ public class Competidor {
 	/**
 	 * Método que incrementa o atributo 'pontosVitoria'
 	 * Esse efeito é causado pela fruta Maracujá(fruta ouro)
-	 * @author lfcor
+	 * 
 	 */
 	public void incrementaPontosVitoria() {
 		this.pontosVitoria++;
@@ -96,3 +101,4 @@ public class Competidor {
 	 */
 	
 }
+
