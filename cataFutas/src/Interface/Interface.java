@@ -249,6 +249,7 @@ public class Interface {
         }
         
         botaoArmazenar.addActionListener(j -> {
+        	String inputNomeArquivo = JOptionPane.showInputDialog("Nomeie o arquivo do seu mapa");
         	
         	JFileChooser fileChooser = new JFileChooser();
         	fileChooser.setCurrentDirectory(new java.io.File("."));
@@ -263,7 +264,7 @@ public class Interface {
         	
         	String caminho = selectedFolder.getAbsolutePath();
         	caminho = caminho.replaceAll("/","\\");
-        	caminho +="\\Mapa.txt";
+        	caminho +="\\"+ inputNomeArquivo + ".txt";
         	
         	
         	String conteudo ="dimensao "+tamanho+"\npedras "+pedra+"\nmaracuja "
@@ -409,7 +410,7 @@ public class Interface {
                 try {
                 	try {
                 		tamanhoMatriz = Integer.parseInt(inputTam);
-                		config.setDimensaoMatriz(tamanhoMatriz); 	
+                		config.setDimensaoMatriz(tamanhoMatriz); 
                 	}catch(NumberFormatException j) {
                 		JOptionPane.showMessageDialog(null,"Erro! Insira apenas números!");
                 		return;
