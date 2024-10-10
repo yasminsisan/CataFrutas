@@ -1,9 +1,8 @@
 package Terreno;
-//oi
 
 
-import java.util.Random;
 
+import java.util.Random;	
 import Arvores.abacateiro;
 import Arvores.aceroleira;
 import Arvores.amoreira;
@@ -32,15 +31,11 @@ public class floresta{
 	private int qGoiaba;
 	private int mochila;
 	private float bicho;
-	private boolean valido = true;
 	public int getNumMaracujaTotal() {
 		return this.qMaracujaTotal;
 	}
 	public int getNumMaracujaChao() {
 		return this.qMaracujaChao;
-	}
-	public boolean eValido() {
-		return this.valido;
 	}
 	public floresta(int dim,int pedra,int maracujaTotal,int maracujaChao,
 			int laranjeira,int laranja,int abacateiro,int abacate,
@@ -48,12 +43,11 @@ public class floresta{
 			int amoreira,int amora, int goiabeira, int goiaba,
 			float bicho,int mochila) {
 		
-		try {
+		
 			//gerando matriz do mapa e colocando as instâncias da classe posicao
 			if(pedra + maracujaChao+laranjeira+laranja+abacateiro+abacate+coqueiro
 				+coco+aceroleira+acerola+amoreira+amora+goiabeira+goiaba>((dim*dim)-2)) {
-				this.valido = false;
-				return;
+				throw new IllegalArgumentException("Erro! O terreno é pequeno demais para a quantidade de elementos");
 			} else {
 				Random random = new Random();
 				this.dimensao = dim;
@@ -242,10 +236,7 @@ public class floresta{
 					this.matriz[j][k].setCompetidor("Nome",mochila);		
 				}
 			}
-		} catch (Exception e){
-			System.out.println(e.getMessage());
-			this.valido = false;
-		}
+		 
 		
 				
 	}
