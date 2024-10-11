@@ -5,14 +5,30 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Classe para armazenar o arquivo a ser lido na iniciação do terreno
+ */
 public class Arquivo {
-    
+
+    /**
+     * Atributo para armazenar o arquivo
+     */
     private File arquivoSelecionado;
 
+    /**
+     * Construtor da classe Arquivo
+     */
     public Arquivo(File arquivoSelecionado) {
         this.arquivoSelecionado = arquivoSelecionado;
     }
 
+    /**
+     * Método para ler o arquivo 
+     * Os dados lidos serão armazenados em um objeto da classe Configuracao
+     * @throws IllegalArgumentException Caso não seja encontrado nenhum arquivo, lança exceção
+     * @throws NumberFormatException Caso haja erro para converter string lida em número, lança exceção
+     * @throws IOException Caso haja erro na leitura do arquivo, lança exceção
+     */
     public Configuracao lerArquivo() {
         Configuracao config = new Configuracao();
 
