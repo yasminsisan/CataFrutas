@@ -3,6 +3,8 @@ package Interface;
 /**
  * Classe que será passada como parâmetro para a criação da floresta
  * Os atributos serão lidos de um arquivo e armazenados na instância de Configuracao
+ * @author Felipe Tojal
+ * @version 1.0
  */
 public class Configuracao {
 	
