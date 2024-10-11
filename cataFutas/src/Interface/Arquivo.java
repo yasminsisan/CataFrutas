@@ -7,6 +7,8 @@ import java.io.IOException;
 
 /**
  * Classe para armazenar o arquivo a ser lido na iniciação do terreno
+ * @author Felipe Tojal
+ * @version 1.0
  */
 public class Arquivo {
 
