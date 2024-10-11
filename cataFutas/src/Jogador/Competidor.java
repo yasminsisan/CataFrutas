@@ -16,8 +16,8 @@ public class Competidor {
 	private boolean comeuBichada;
 	/**
 	 * Construtor para objetos da classe Competidor
-	 * @param Nome do Competidor
-	 * @param Capacidade da mochila do competidor
+	 * @param nome Nome do Competidor
+	 * @param tamanhoMochila Capacidade da mochila do competidor
 	 */
 	public Competidor(String nome, int tamanhoMochila) {
 		this.nome = nome;
