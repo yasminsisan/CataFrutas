@@ -7,12 +7,10 @@ import java.io.IOException;
 
 /**
  * Classe para armazenar o arquivo a ser lido na iniciação do terreno
- * @author Felipe Tojal
- * @version 1.0
  */
 public class Arquivo {
-
-    /**
+    
+	 /**
      * Atributo para armazenar o arquivo
      */
     private File arquivoSelecionado;
@@ -58,7 +56,8 @@ public class Arquivo {
                         break;
                     case "maracuja":
                     	int frutaMaracujaTotal = Integer.parseInt(partes[1]); 
-                        int frutaMaracujaInicio = Integer.parseInt(partes[2]);
+                        int frutaMaracujaInicio = Integer.parseInt(partes[2]);    
+                        
                         config.setQuantMaracujaTotal(frutaMaracujaTotal);
                         config.setQuantMaracujaInicio(frutaMaracujaInicio);
                         break;
