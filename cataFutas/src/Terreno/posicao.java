@@ -47,7 +47,7 @@ public class posicao {
 	
 	/**
 	 * Método que adiciona uma árvore específica à posição
-	 * @param instância da classe filha da classe arvore desejada
+	 * @param arvore instância da classe filha da classe arvore desejada
 	 */
 	public void setArvore(arvore arvore) {
 		this.arvore = arvore;
@@ -70,7 +70,7 @@ public class posicao {
 	}
 	/**
 	 * Método que adiciona uma fruta específica à posição
-	 * @param instância da classe filha da classe fruta desejada
+	 * @param fruta instância da classe filha da classe fruta desejada
 	 */
 	public void setFruta(Fruta fruta) {
 		this.fruta = fruta;
@@ -98,8 +98,8 @@ public class posicao {
 	}
 	/**
 	 * Método que adiciona o competidor a uma posição
-	 * @param Nome do competidor
-	 * @param Capacidade da mochila do competidor/
+	 * @param nome Nome do competidor
+	 * @param mochila Capacidade da mochila do competidor/
 	 */
 	public void setCompetidor(String nome,int mochila) {
 		this.competidor = new Competidor(nome,mochila);
