@@ -16,7 +16,7 @@ public class Mochila {
 	 * Construtor da classe mochila
 	 * Recebe o tamanho da mochila no construtor e cria a mochila
 	 * @throws IllegalArgumentException Se o tamanho inserido for menor ou igual a 0, uma exceção é lançada
-	 * @param Capacidade da mochila
+	 * @param tamanho Capacidade da mochila
 	 * 
 	 */
 	public Mochila(int tamanho) {
@@ -32,7 +32,7 @@ public class Mochila {
 	 * Método que adiciona elemento na mochila
 	 * Recebe um elemento do tipo Fruta
 	 * @throws IllegalArgumentException Se a mochila estiver cheia, lança uma exceção
-	 * @param instancia da classe filha de classe fruta desejada
+	 * @param fruta instancia da classe filha de classe fruta desejada
 	 * 
 	 */
 	public void adicionarFruta(Fruta fruta) {
@@ -50,7 +50,7 @@ public class Mochila {
 	/**
 	 * Método que remove elemento da mochila
 	 * @throws IllegalArgumentException Caso a fruta não seja encontrada na mochila, retorna uma exceção
-	 * @param instância da classe filha da classe fruta desejada
+	 * @param fruta instância da classe filha da classe fruta desejada
 	 * 
 	 */
 	public void removerFruta(Fruta fruta) {
