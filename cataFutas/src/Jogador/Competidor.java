@@ -28,6 +28,11 @@ public class Competidor {
 		this.comeuBichada = false;
 	}
 	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	
 	/**
 	 * Método que torna o atributo 'comeuBichada' em false
 	 * Utilizado quando o usuário comer uma fruta antídoto
@@ -82,6 +87,20 @@ public class Competidor {
 		this.pontosVitoria++;
 	}
 	
+	/**
+	 * Método que configura a quantidade de pontos de movimento 
+	 * @param pontos os pontos gerados pelo lançamento dos dados
+	 */
+	public void setPontosMovimento(int pontos) {
+		this.pontosMovimento = pontos;
+	}
+	/**
+	 * Método de acesso aos pontos de movimento
+	 * @return os pontos de movimento
+	 */
+	public int getPontosMovimento() {
+		return this.pontosMovimento;
+	}
 	
 	/*
 	 * 	Não criei todas os métodos
