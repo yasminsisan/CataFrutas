@@ -101,8 +101,16 @@ public class posicao {
 	 * @param nome Nome do competidor
 	 * @param mochila Capacidade da mochila do competidor/
 	 */
-	public void setCompetidor(String nome,int mochila) {
-		this.competidor = new Competidor(nome,mochila);
+	public void setCompetidor(Competidor competidor) {
+		this.competidor = competidor;
+	}
+	
+	public Competidor getCompetidor() {
+		return this.competidor;
+	}
+	
+	public void removerCompetidor() {
+		this.competidor = null;
 	}
 	
 }
