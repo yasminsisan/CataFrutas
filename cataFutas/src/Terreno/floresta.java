@@ -58,6 +58,51 @@ public class floresta{
 		return this.qMaracujaChao;
 	}
 	
+	public int getDimensao() {
+		return this.dimensao;
+	}
+	
+	public void exibirFloresta() {
+		for(int i=0;i<this.dimensao;i++) {
+			for(int j=0;j<this.dimensao;j++) {
+				if(this.matriz[i][j].temPedra()==true) {
+					System.out.println("PEDRA  i: "+i+" j: "+j);
+				} else if(this.matriz[i][j].getArvore() instanceof coqueiro) { 
+					System.out.println("COQUEIRO  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getArvore() instanceof abacateiro) { 
+					System.out.println("ABACATEIRO  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getArvore() instanceof aceroleira) { 
+					System.out.println("ACEROLEIRA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getArvore() instanceof amoreira) { 
+					System.out.println("AMOREIRA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getArvore() instanceof goiabeira) { 
+					System.out.println("GOIABEIRA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getArvore() instanceof laranjeira) { 
+					System.out.println("LARANJEIRA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Coco) { 
+					System.out.println("COCO  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Abacate) { 
+					System.out.println("ABACATE  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Acerola) { 
+					System.out.println("ACEROLA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Amora) { 
+					System.out.println("AMORA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Goiaba) { 
+					System.out.println("GOIABA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Laranja) { 
+					System.out.println("LARANJA  i: "+i+" j: "+j);
+				}else if(this.matriz[i][j].getFruta() instanceof Maracuja) { 
+					System.out.println("MARACUJA  i: "+i+" j: "+j);
+				} else if(this.matriz[i][j].temCompetidor()) {
+					System.out.println("JOGADOR i: "+i+" j: "+j);
+					System.out.println("Nome do jogador: "+this.matriz[i][j].getCompetidor().getNome());
+				
+				}
+        
+			}
+		}
+	}
+	
 	/**
 	 * Construtor para objetos da classe floresta
 	 * @param dim Dimensão do terreno
@@ -273,16 +318,8 @@ public class floresta{
 					}						
 					this.matriz[j][k].setFruta(new Goiaba());		
 				}
-				//Coloca, de maneira aleatória, instâncias da classe Competidor nas posições da matriz que representa o terreno
-				for(int i=0;i<2;i++) {
-					int j = random.nextInt(this.dimensao);
-					int k = random.nextInt(this.dimensao);
-					while(this.matriz[j][k].temCompetidor()==true) {
-						j = random.nextInt(this.dimensao);
-						k = random.nextInt(this.dimensao);
-					}						
-					this.matriz[j][k].setCompetidor("Nome",mochila);		
-				}
+				
+				
 			}
 		 
 		
