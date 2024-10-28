@@ -68,7 +68,111 @@ public class partida {
 		}
 	}
 	
+	
+	
 	public void andarFrente() {
+		if(this.rodada%2 !=0) {
+			int linha=0;
+			int coluna=0;
+			for(int i = 0; i<this.floresta.getDimensao();i++) {
+				for(int j=0; j<this.floresta.getDimensao();j++) {
+					if(this.floresta.matriz[i][j].getCompetidor()==this.competidor1) {
+						linha = i;
+						coluna = j;
+					}
+				}
+			}
+			if(linha!=0) {
+				if(this.floresta.matriz[linha-1][coluna].temPedra()) {
+					if(this.competidor1.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha-1][coluna].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para a frente");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha-1][coluna].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para frente");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-2);
+						if(this.competidor1.getPontosMovimento()==0) {
+							this.rodada++;
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor1.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor1.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha-1][coluna].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para a frente");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha-1][coluna].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para frente");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-1);
+						if(this.competidor1.getPontosMovimento()==0) {
+						this.rodada++;
+						this.rolarDados();
+						}
+					}
+				}
+					
+			}else {
+				System.out.println(this.competidor1.getNome()+" Tentou se movimentar para frente, mas atingiu a borda do terreno");
+			}	
+		} else if(this.rodada%2 == 0) { 
+			
+			int linha=0;
+			int coluna=0;
+			for(int i = 0; i<this.floresta.getDimensao();i++) {
+				for(int j=0; j<this.floresta.getDimensao();j++) {
+					if(this.floresta.matriz[i][j].getCompetidor()==this.competidor2) {
+						linha = i;
+						coluna = j;
+					}
+				}
+			}
+			if(linha!=0) {
+				if(this.floresta.matriz[linha-1][coluna].temPedra()) {
+					if(this.competidor2.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha-1][coluna].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para a frente");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha-1][coluna].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para frente");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-2);
+						if(this.competidor2.getPontosMovimento()==0) {
+							this.rodada++;
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor2.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor2.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha-1][coluna].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para a frente");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha-1][coluna].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para frente");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-1);
+						if(this.competidor2.getPontosMovimento()==0) {
+						this.rodada++; 
+						this.rolarDados();
+						}
+					}
+				}
+					
+			}else {
+				System.out.println(this.competidor2.getNome()+" Tentou se movimentar para frente, mas atingiu a borda do terreno");
+			}
+		}
+	}
+	public void andarTras() {
 		if(this.rodada%2 !=0) {
 			
 			int linha=0;
@@ -81,12 +185,43 @@ public class partida {
 					}
 				}
 			}
-			this.floresta.matriz[linha][coluna].removerCompetidor();
-			if(linha!=0) {
-				this.floresta.matriz[linha-1][coluna].setCompetidor(competidor1);
-				System.out.println(this.competidor1.getNome()+" Se movimentou para frente");
+			if(linha!= this.floresta.getDimensao()-1) {
+				if(this.floresta.matriz[linha+1][coluna].temPedra()) {
+					if(this.competidor1.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha+1][coluna].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para trás");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha+1][coluna].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para trás");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-2);
+						if(this.competidor1.getPontosMovimento()==0) {
+							this.rodada++;
+							this.rolarDados(); 
+						} 
+					} else {
+						System.out.println(this.competidor1.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor1.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha+1][coluna].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para trás");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha+1][coluna].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para trás");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-1);
+						if(this.competidor1.getPontosMovimento()==0) {
+						this.rodada++; 
+						this.rolarDados(); 
+						}
+					}
+				}
+					
 			}else {
-				System.out.println(this.competidor1.getNome()+" Tentou se movimentar para frente, mas atingiu a borda do terreno");
+				System.out.println(this.competidor1.getNome()+" Tentou se movimentar para trás, mas atingiu a borda do terreno");
 			}
 			
 		} else if(this.rodada%2 == 0) {
@@ -101,25 +236,260 @@ public class partida {
 					}
 				}
 			}
-			this.floresta.matriz[linha][coluna].removerCompetidor();
-			if(linha!=0) {
-				this.floresta.matriz[linha-1][coluna].setCompetidor(competidor2);
-				System.out.println(this.competidor2.getNome()+" Se movimentou para frente");
+			if(linha!= this.floresta.getDimensao()-1) {
+				if(this.floresta.matriz[linha+1][coluna].temPedra()) {
+					if(this.competidor2.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha+1][coluna].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para trás");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha+1][coluna].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para trás");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-2);
+						if(this.competidor2.getPontosMovimento()==0) {
+							this.rodada++; 
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor2.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor2.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha+1][coluna].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para trás");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha+1][coluna].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para trás");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-1);
+						if(this.competidor2.getPontosMovimento()==0) {
+						this.rodada++;
+						this.rolarDados(); 
+						}
+					}
+				}
+					
 			}else {
-				System.out.println(this.competidor2.getNome()+" Tentou se movimentar para frente, mas atingiu a borda do terreno");
+				System.out.println(this.competidor2.getNome()+" Tentou se movimentar para trás, mas atingiu a borda do terreno");
 			}
 			
 		}
-		this.rodada++;
-	}
-	public void andarTras() {
 		
 	}
 	public void andarEsquerda() {
+		if(this.rodada%2 !=0) {
+			
+			int linha=0;
+			int coluna=0;
+			for(int i = 0; i<this.floresta.getDimensao();i++) {
+				for(int j=0; j<this.floresta.getDimensao();j++) {
+					if(this.floresta.matriz[i][j].getCompetidor()==this.competidor1) {
+						linha = i;
+						coluna = j;
+					}
+				}
+			}
+			if(coluna!=0) {
+				if(this.floresta.matriz[linha][coluna-1].temPedra()) {
+					if(this.competidor1.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha][coluna-1].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para a esquerda");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna-1].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para a esquerda");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-2);
+						if(this.competidor1.getPontosMovimento()==0) {
+							this.rodada++; 
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor1.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor1.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha][coluna-1].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para a esquerda");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna-1].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para a esquerda");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-1);
+						if(this.competidor1.getPontosMovimento()==0) {
+						this.rodada++; 
+						this.rolarDados();
+						}
+					}
+				}
+					
+			}else {
+				System.out.println(this.competidor1.getNome()+" Tentou se movimentar para a esquerda, mas atingiu a borda do terreno");
+			}
+			
+			
+		} else if(this.rodada%2 == 0) {
+			
+			int linha=0;
+			int coluna=0;
+			for(int i = 0; i<this.floresta.getDimensao();i++) {
+				for(int j=0; j<this.floresta.getDimensao();j++) {
+					if(this.floresta.matriz[i][j].getCompetidor()==this.competidor2) {
+						linha = i;
+						coluna = j;
+					}
+				}
+			}
+			if(coluna!=0) {
+				if(this.floresta.matriz[linha][coluna-1].temPedra()) {
+					if(this.competidor2.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha][coluna-1].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para a esquerda");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna-1].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para a esquerda");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-2);
+						if(this.competidor2.getPontosMovimento()==0) {
+							this.rodada++; 
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor2.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor2.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha][coluna-1].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para a esquerda");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna-1].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para a esquerda");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-1);
+						if(this.competidor2.getPontosMovimento()==0) {
+						this.rodada++; 
+						this.rolarDados();
+						}
+					}
+				}
+					
+			}else {
+				System.out.println(this.competidor2.getNome()+" Tentou se movimentar para a esquerda, mas atingiu a borda do terreno");
+			}
+			
+		}
 		
 	}
 	public void andarDireita() {
-		
+		if(this.rodada%2 !=0) {
+			
+			int linha=0;
+			int coluna=0;
+			for(int i = 0; i<this.floresta.getDimensao();i++) {
+				for(int j=0; j<this.floresta.getDimensao();j++) {
+					if(this.floresta.matriz[i][j].getCompetidor()==this.competidor1) {
+						linha = i;
+						coluna = j;
+					}
+				}
+			}
+			if(coluna!= this.floresta.getDimensao()-1) {
+				if(this.floresta.matriz[linha][coluna+1].temPedra()) {
+					if(this.competidor1.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha][coluna+1].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para a direita");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna+1].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para a direita");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-2);
+						if(this.competidor1.getPontosMovimento()==0) {
+							this.rodada++; 
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor1.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor1.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha][coluna+1].temCompetidor()) {
+							System.out.println(this.competidor1.getNome()+" Empurrou um jogador para a direita");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna+1].setCompetidor(this.competidor1);
+							System.out.println(this.competidor1.getNome()+" Se movimentou para a direita");						
+						}
+						this.competidor1.setPontosMovimento(this.competidor1.getPontosMovimento()-1);
+						if(this.competidor1.getPontosMovimento()==0) {
+						this.rodada++; 
+						this.rolarDados();
+						}
+					}
+				}
+					
+			}else {
+				System.out.println(this.competidor1.getNome()+" Tentou se movimentar para a direita, mas atingiu a borda do terreno");
+			}
+			
+			
+		} else if(this.rodada%2 == 0) {
+			
+			int linha=0;
+			int coluna=0;
+			for(int i = 0; i<this.floresta.getDimensao();i++) {
+				for(int j=0; j<this.floresta.getDimensao();j++) {
+					if(this.floresta.matriz[i][j].getCompetidor()==this.competidor2) {
+						linha = i;
+						coluna = j;
+					}
+				}
+			}
+			if(coluna!= this.floresta.getDimensao()-1) {
+				if(this.floresta.matriz[linha][coluna+1].temPedra()) {
+					if(this.competidor2.getPontosMovimento()>=2) {
+						if(this.floresta.matriz[linha][coluna+1].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para a direita");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna+1].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para a direita");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-2);
+						if(this.competidor2.getPontosMovimento()==0) {
+							this.rodada++; 
+							this.rolarDados();
+						}
+					} else {
+						System.out.println(this.competidor2.getNome()+" Não tem pontos de jogo suficientes");
+					}
+				} else {
+					if(this.competidor2.getPontosMovimento()>=1) {
+						if(this.floresta.matriz[linha][coluna+1].temCompetidor()) {
+							System.out.println(this.competidor2.getNome()+" Empurrou um jogador para a direita");
+						} else {
+							this.floresta.matriz[linha][coluna].removerCompetidor();
+							this.floresta.matriz[linha][coluna+1].setCompetidor(this.competidor2);
+							System.out.println(this.competidor2.getNome()+" Se movimentou para a direita");						
+						}
+						this.competidor2.setPontosMovimento(this.competidor2.getPontosMovimento()-1);
+						if(this.competidor2.getPontosMovimento()==0) {
+						this.rodada++; 
+						this.rolarDados();
+						}
+					}
+				}
+					
+			}else {
+				System.out.println(this.competidor2.getNome()+" Tentou se movimentar para a direita, mas atingiu a borda do terreno");
+			}
+			
+		}
 	}
 	
 	public void ExibirInfo() {
@@ -153,21 +523,67 @@ public class partida {
 		
 		Competidor competidor1 = new Competidor("Pedro",10);
 		Competidor competidor2 = new Competidor("Fábio",10);
-		floresta floresta1 = new floresta(3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10);
+		floresta floresta1 = new floresta(6,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10);
 		
 		partida partida = new partida(competidor1,competidor2,floresta1);
 		
 		partida.ExibirInfo();
 		
-		partida.floresta.exibirFloresta();
+		
 		
 		partida.rolarDados();
 		
+		partida.floresta.exibirFloresta();
+		
 		partida.andarFrente();
 		
 		partida.floresta.exibirFloresta();
 		
+		partida.andarEsquerda();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarTras();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarDireita();
+		
+		partida.floresta.exibirFloresta();
+		
 		partida.andarFrente();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarEsquerda();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarTras();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarDireita();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarDireita();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarFrente();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarEsquerda();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarTras();
+		
+		partida.floresta.exibirFloresta();
+		
+		partida.andarDireita();
 		
 		partida.floresta.exibirFloresta();
 		
